@@ -1,2 +1,18 @@
-var app = angular.modular('wowDb', 
+var app = angular.module('wowDb', 
   ['ngResource', 'ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+
+  $routeProvider.when('/', {
+    templateUrl: "<%= asset_path('templates/home.html') %>",
+    controller: "HomePageController"
+  })
+  .when('/realms', {
+    templateUrl: "<%= asset_path('templates/realms.html') %>",
+    controller: "RealmController"
+  })
+  .otherwise({
+    redirectTo: "/"
+  })
+
+}]);
