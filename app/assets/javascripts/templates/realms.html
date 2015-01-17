@@ -1,1 +1,21 @@
 <h2>Realm status</h2>
+<div class ='realm-table'>
+  <table>
+    <tr>
+      <th><a href = '' ng-click="order = 'status'; reverse = !reverse"> Status </a></th>
+      <th><a href = '' ng-click="order = 'name'; reverse = !reverse"> Realm Name </a></th>
+      <th><a href = '' ng-click="order = 'type'; reverse = !reverse"> Type </a></th>
+      <th><a href = '' ng-click="order = 'population'; reverse = !reverse"> Population </a></th>
+      <th><a href = '' ng-click="order = 'locale'; reverse = !reverse"> Locale </a></th>
+      <th><a href = '' ng-click="order = 'queue'; reverse = !reverse"> Queue </a></th>
+    </tr>
+    <tr ng-repeat ="realm in realms | orderBy:order:reverse">
+      <th>{{ realm.status }}</th>
+      <th>{{ realm.name }}</th>
+      <th>{{ realm.type }}</th>
+      <th>{{ realm.population }}</th>
+      <th>{{ realm.locale }}</th>
+      <th>{{ realm.queue }}</th>
+    </tr>
+  </table>
+</div>
