@@ -11,6 +11,10 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: "<%= asset_path('templates/realms.html') %>",
     controller: "RealmController"
   })
+  .when('/characters', {
+    templateUrl: "<%= asset_path('templates/characters.html') %>",
+    controller: "CharController"
+  })
   .otherwise({
     redirectTo: "/"
   })
