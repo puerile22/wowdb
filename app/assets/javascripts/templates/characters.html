@@ -1,3 +1,4 @@
 <div class = 'characters'>
-  <span ng-repeat = "character in characters">{{ character.name }} {{ character.realm }}</span>
+  <span ng-repeat = "character in characters">
+  <img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/>{{ character.name }} {{ character.realm }}</span>
 </div>

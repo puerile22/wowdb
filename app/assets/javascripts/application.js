@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require angular
 //= require angular-resource
 //= require angular-route
 //= require app.js.erb
 //= require_tree .
+$(function(){ $(document).foundation(); });

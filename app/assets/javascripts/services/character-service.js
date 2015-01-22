@@ -1,6 +1,7 @@
 app.service("CharFactory", ['$http', function($http) {
-  var characters = [];
+  var characters;
   this.find = function (realms, character, params) {
+    characters = [];
     var baseUrl = 'https://us.api.battle.net/wow/character/';
 
     params = params || {};
@@ -10,9 +11,6 @@ app.service("CharFactory", ['$http', function($http) {
       jsonp: 'JSON_CALLBACK'
     });
 
-    // if (/character/.test(path)) {
-    //   delete params.callback;
-    // }
     for(var i = 0;i < realms.length;i++) {
       $http({
         method:'jsonp',
@@ -20,6 +18,7 @@ app.service("CharFactory", ['$http', function($http) {
         params: params
       }).success(function(data) {
         characters.push(data);
+      }).error(function(data) {
       });
     };
     this.getCharacters = function() {
