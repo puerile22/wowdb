@@ -1,4 +1,8 @@
 <div class = 'characters'>
-  <span ng-repeat = "character in characters">
-  <img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/>{{ character.name }} {{ character.realm }}</span>
+  <div class = 'small-9 small-centered columns'>
+    <div class = 'small-3 columns' ng-repeat = "character in characters">
+      <a href = '#/character/{{ character.realm }}/{{ character.name }}' class='color-{{ character.class }}'><img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/>{{ character.name }}</a><br>
+      {{ character.level }} {{ race[character.race] }} {{ class[character.class] }}<br>
+      {{ character.realm }}
+    </div>
 </div>

@@ -1,0 +1,6 @@
+<div class = 'small-9 small-centered columns'>
+  <img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/><span class = 'color-{{character.class}}'>{{ character.name }}</span><br>
+  {{ character.level }} {{ race[character.race] }} {{ class[character.class] }}<br>
+  {{ character.realm }}<br>
+  Item level: {{ character.items.averageItemLevel }}<br>
+</div>

@@ -1,5 +1,8 @@
-app.controller("CharController", ["$scope", "CharFactory", "$location", function($scope, CharFactory, $location) {
-  $scope.characters = CharFactory.getCharacters();
+app.controller("SingleCharController", ["$scope", "CharFactory", '$route', function($scope, CharFactory, $route) {
+  CharFactory.singleCharacter($route.current.params, {fields: 'items'}).success(function(data) {
+    $scope.character = data;
+  });
+  $scope.imgBaseUrl = 'http://us.battle.net/static-render/us';
   $scope.race = {
     '1': 'Human',
     '2': 'Orc',
@@ -29,10 +32,5 @@ app.controller("CharController", ["$scope", "CharFactory", "$location", function
     '9': 'Warlock',
     '10': 'Monk',
     '11': 'Druid'
-  }
-  $scope.imgBaseUrl = 'http://us.battle.net/static-render/us';
-  $scope.getCharacter = function(realm, name) {
-    CharFactory.singleCharacter(realm, name, {fields: 'items'});
-    $location.path('/character');
   }
 }]);
