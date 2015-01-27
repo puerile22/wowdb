@@ -19,6 +19,10 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: "<%= asset_path('templates/character.html') %>",
     controller: "SingleCharController"
   })
+  .when('/item/:id', {
+    templateUrl: "<%= asset_path('templates/item.html') %>",
+    controller: 'ItemController'
+  })
   .otherwise({
     redirectTo: "/"
   })
