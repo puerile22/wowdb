@@ -5,6 +5,6 @@
   Item level: {{ character.items.averageItemLevel }}<br>
   Achievement point: {{ character.achievementPoints }}<br>
   <div ng-repeat = 'item in items' class = 'small-1 columns' ng-if = 'hasItem(item)'>
-    <a href = 'items/{{ character.items[item].id }}'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[item].icon }}.jpg" data-quality = '{{ character.items[item].quality }}'/></a>
+    <a href = '#/items/{{ character.items[item].id }}'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[item].icon }}.jpg" data-quality = '{{ character.items[item].quality }}'/></a>
   </div>
 </div>
