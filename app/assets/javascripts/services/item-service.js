@@ -1,10 +1,15 @@
-app.service('ItemService', ['$http', function($http) {
+app.service('ItemService', ['$http', "$resource", function($http, $resource) {
   var params = {
     apiKey: 'mu3m6axygmed2jt8euvf94u8z4qvhazt',
     locale: 'en_US',
     jsonp: 'JSON_CALLBACK'
   };
   var baseUrl = 'https://us.api.battle.net/wow/item/';
+  var itemSubClasses = $http({
+    method: 'jsonp',
+    url: 'https://us.api.battle.net/wow/data/item/classes',
+    params: params
+  });
   this.getItem = function(id) {
     return $http({
       method: 'jsonp',
@@ -12,11 +17,68 @@ app.service('ItemService', ['$http', function($http) {
       params: params
     })
   };
-  this.getPvpUnranked = function(id) {
+  this.getAvailableContexts = function(id, context) {
     return $http({
       method: 'jsonp',
-      url: baseUrl + id + '/pvp-unranked',
+      url: baseUrl + id + '/' + context,
       params: params
     })
   };
-}])
+  this.getBonusStats = {0: "Mana", 1: "Health", 3: "Agility", 4: "Strength", 5: "Intellect", 6: "Spirit", 7: "Stamina", 12: "Defense", 13: "Dodge", 14: "Parry", 15: "Block", 16: "Hit (Melee)", 17: "Hit (Ranged)", 18: "Hit (Spell)", 19: "Critical Strike (Melee)", 20: "Critical Strike (Ranged)", 21: "Critical Strike (Spell)", 22: "Hit Avoidance (Melee)", 23: "Hit Avoidance (Ranged)", 24: "Hit Avoidance (Spell)", 25: "Critical Strike Avoidance (Melee)", 26: "Critical Strike Avoidance (Ranged)", 27: "Critical Strike Avoidance (Spell)", 28: "Haste (Melee)", 29: "Haste (Ranged)", 30: "Haste (Spell)", 31: "Hit", 32: "Critical Strike", 33: "Hit Avoidance", 34: "Critical Strike Avoidance", 35: "PvP Resilience", 36: "Haste", 37: "Expertise", 38: "Attack Power", 39: "Ranged Attack Power", 40: "Versatility", 41: "Bonus Healing", 42: "Bonus Damage", 43: "Mana Regeneration", 44: "Armor Penetration", 45: "Spell Power", 46: "Health Per 5 Sec.", 47: "Spell Penetration", 48: "Block Value", 49: "Mastery", 50: "Bonus Armor", 51: "Fire Resistance", 52: "Frost Resistance", 53: "Holy Resistance", 54: "Shadow Resistance", 55: "Nature Resistance", 56: "Arcane Resistance", 57: "PvP Power", 58: "Amplify", 59: "Multistrike", 60: "Readiness", 61: "Speed", 62: "Leech", 63: "Avoidance", 64: "Indestructible", 65: "Unused 7", 66: "Cleave", 67: "Versatility", 68: "Unused 10", 69: "Unused 11", 70: "Unused 12"};
+  this.getItemSubClasses = function() {
+    return itemSubClasses;
+  };
+  this.itemBind = {
+    '1': 'Binds when picked up',
+    '2': 'Binds when equipped'
+  };
+  this.itemClass = {
+    "0":"Consumable",
+    "1":"Container",
+    "2":"Weapon",
+    "3":"Gem",
+    "4":"Armor",
+    "5":"Reagent",
+    "6":"Projectile",
+    "7":"Trade Goods",
+    "8":"Generic",
+    "9":"Book",
+    "10":"Money",
+    "11":"Quiver",
+    "12":"Quest",
+    "13":"Key",
+    "14":"Permanent",
+    "15":"Junk",
+    "16":"Glyph"
+  };
+  this.inventoryType = {
+    "0":"None",
+    "1":"Head",
+    "2":"Neck",
+    "3":"Shoulder",
+    "4":"Shirt",
+    "5":"Chest",
+    "6":"Waist",
+    "7":"Legs",
+    "8":"Feet",
+    "9":"Wrist",
+    "10":"Hands",
+    "11":"Finger",
+    "12":"Trinket",
+    "13":"One-Hand",
+    "14":"Shield",
+    "15":"Ranged",
+    "16":"Cloak",
+    "17":"Two-Hand",
+    "18":"Bag",
+    "19":"Tabard",
+    "20":"Robe",
+    "21":"Main Hand",
+    "22":"Off Hand",
+    "23":"Held In Off-hand",
+    "24":"Ammo",
+    "25":"Thrown",
+    "26":"Ranged Right",
+    "28":"Relic"
+  };
+}]);

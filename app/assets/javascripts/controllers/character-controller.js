@@ -34,5 +34,5 @@ app.controller("CharController", ["$scope", "CharFactory", "$location", function
   $scope.getCharacter = function(realm, name) {
     CharFactory.singleCharacter(realm, name, {fields: 'items'});
     $location.path('/character');
-  }
+  };
 }]);

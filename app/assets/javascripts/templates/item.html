@@ -1,2 +1,11 @@
 <h2 data-quality-title = '{{ item.quality }}'>{{ item.name }}</h2>
-<img ng-src = 'http://media.blizzard.com/wow/icons/56/{{ item.icon }}.jpg' />
+<div class = 'small-6 columns'>
+  <img ng-src = 'http://media.blizzard.com/wow/icons/56/{{ item.icon }}.jpg' />
+  <div class = 'small-4 columns'>
+    <p style = 'color: #00ff00' ng-if = 'hasNameDescription()'>{{ item.nameDescription }}</p>
+    <p class = 'itemLevel'>Item Level {{ item.itemLevel }}</p>
+    <p ng-if = 'itemBind[item.itemBind]'>{{ itemBind[item.itemBind] }}</p>
+    <span>{{ inventoryType[item.inventoryType] }}</span>
+    <span>{{ itemSubClass }}</span>
+  </div>
+</div>
