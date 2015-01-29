@@ -30,7 +30,7 @@ app.controller('ItemController', ['$scope', 'ItemService', '$route', function($s
       };
     });
   });
-  $scope.stats = ItemService.getBonusStats;
+  $scope.itemStats = ItemService.itemStats;
   $scope.itemBind = ItemService.itemBind;
   $scope.itemClass = ItemService.itemClass;
   $scope.inventoryType = ItemService.inventoryType;
