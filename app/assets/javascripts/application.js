@@ -16,6 +16,7 @@
 //= require angular
 //= require angular-resource
 //= require angular-route
+//= require angular-ui
 //= require app.js.erb
 //= require_tree .
 $(function(){ $(document).foundation(); });

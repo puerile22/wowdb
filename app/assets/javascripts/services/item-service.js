@@ -28,6 +28,23 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
   this.getItemSubClasses = function() {
     return itemSubClasses;
   };
+  this.getSellPrice = function(price) {
+    var priceStr = price.toString();
+    var arr = priceStr.split("").reverse();
+    var sellPrice = {
+      '0': 0,
+      '1': 0,
+      '2': 0
+    };
+    for(var i = 0;i < arr.length/2 || i < 3;i++) {
+      if(i === 2) {
+        sellPrice[2 - i] = arr.slice(i * 2).reverse().join('');
+      } else {
+        sellPrice[2 - i] = arr.slice(i * 2,i * 2 + 2).reverse().join('');
+      }
+    };
+    return sellPrice;
+  };
   this.itemBind = {
     '1': 'Binds when picked up',
     '2': 'Binds when equipped'

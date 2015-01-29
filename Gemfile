@@ -45,3 +45,4 @@ gem 'pry-byebug'
 gem 'foundation-rails', '~> 5.4.5'
 gem 'foundation-icons-sass-rails'
 gem "font-awesome-rails"
+gem 'angular-ui-rails'
