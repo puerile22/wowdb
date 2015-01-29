@@ -8,6 +8,6 @@
     <span>{{ inventoryType[item.inventoryType] }}</span>
     <span>{{ itemSubClass }}</span>
     <p ng-if = 'item.armor'>{{ item.armor }} Armor</p>
-    <p ng-repeat = "stats in item.bonusStats" data-stat = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
+    <p ng-repeat = "stats in item.bonusStats | orderBy:predicate" data-stat = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
   </div>
 </div>

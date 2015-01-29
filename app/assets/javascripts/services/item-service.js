@@ -110,7 +110,7 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
    29: "Ranged Haste",
    30: "Spell Haste",
    31: "Hit",
-   32: "Crit",
+   32: "Critical Strike",
    33: "Hit Taken",
    34: "Crit Taken",
    35: "Resilience",

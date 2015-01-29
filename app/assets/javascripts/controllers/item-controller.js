@@ -30,6 +30,13 @@ app.controller('ItemController', ['$scope', 'ItemService', '$route', function($s
       };
     });
   });
+  $scope.predicate = function(stats) {
+    if (stats.stat > 70) {
+      return 2;
+    } else {
+      return stats.stat;
+    }
+  };
   $scope.itemStats = ItemService.itemStats;
   $scope.itemBind = ItemService.itemBind;
   $scope.itemClass = ItemService.itemClass;
