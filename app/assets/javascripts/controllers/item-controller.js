@@ -3,13 +3,13 @@ app.controller('ItemController', ['$scope', 'ItemService', '$route', 'CharFactor
     if (data.name === undefined) {
       ItemService.getAvailableContexts($route.current.params.id, data.availableContexts[0]).success(function(data) {
         $scope.item = data;
-        $scope.hasNameDescription = function() {
-          if ($scope.item.nameDescription === "") {
-            return false;
-          } else {
-            return true;
-          };
-        };
+        // $scope.hasNameDescription = function() {
+        //   if ($scope.item.nameDescription === "") {
+        //     return false;
+        //   } else {
+        //     return true;
+        //   };
+        // };
         ItemService.getItemSubClasses().success(function(data) {
           $scope.itemSubClasses = data.classes;
           for(var i = 0;i < $scope.itemSubClasses.length;i++) {
@@ -29,13 +29,7 @@ app.controller('ItemController', ['$scope', 'ItemService', '$route', 'CharFactor
       });
     } else {
       $scope.item = data;
-      $scope.hasNameDescription = function() {
-        if ($scope.item.nameDescription === "") {
-          return false;
-        } else {
-          return true;
-        };
-      };
+      $scope.hasNameDescription = ItemService.hasNameDescription;
       ItemService.getItemSubClasses().success(function(data) {
         $scope.itemSubClasses = data.classes;
         for(var i = 0;i < $scope.itemSubClasses.length;i++) {

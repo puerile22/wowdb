@@ -6,5 +6,7 @@
   Achievement point: {{ character.achievementPoints }}<br>
   <div ng-repeat = 'item in items' class = 'small-1 columns' ng-if = 'hasItem(item)'>
     <a href = '#/item/{{ character.items[item].id }}/{{ character.items[item].context }}'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[item].icon }}.jpg" data-quality = '{{ character.items[item].quality }}'/></a>
+    <div class = 'itemInfo'><p data-quality-title = '{{ character.items[item].quality }}'>{{ character.items[item].name }}</p>
+    </div>
   </div>
 </div>

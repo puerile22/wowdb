@@ -31,3 +31,15 @@
 .color-11 {
   color: #FF7D0A;
 }
+.itemInfo {
+  position: absolute;
+  display: none;
+  width: 500%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  border: 1px solid grey;
+  border-radius:4px;
+}
+a:hover + .itemInfo {
+    display: inline-block;
+}

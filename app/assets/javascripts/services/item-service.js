@@ -45,6 +45,13 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
     };
     return sellPrice;
   };
+  this.hasNameDescription = function(item) {
+    if (item.nameDescription === "") {
+      return false;
+    } else {
+      return true;
+    };
+  };
   this.itemBind = {
     '1': 'Binds when picked up',
     '2': 'Binds when equipped'
