@@ -1,4 +1,4 @@
-app.service('ItemService', ['$http', "$resource", function($http, $resource) {
+app.service('ItemService', ['$http', "$resource", function($http) {
   var params = {
     apiKey: 'mu3m6axygmed2jt8euvf94u8z4qvhazt',
     locale: 'en_US',
@@ -28,7 +28,7 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
   this.getItemSubClasses = function() {
     return itemSubClasses;
   };
-  this.getSellPrice = function(price) {
+  var getSellPrice = function(price) {
     var priceStr = price.toString();
     var arr = priceStr.split("").reverse();
     var sellPrice = {
@@ -45,7 +45,7 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
     };
     return sellPrice;
   };
-  this.hasNameDescription = function(item) {
+  var hasNameDescription = function(item) {
     if (item.nameDescription === "") {
       return false;
     } else {
@@ -65,6 +65,23 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
     } else {
       return false;
     }
+  };
+  this.itemHelper = function($scope, data) {
+    $scope.itemSubClasses = data.classes;
+    $scope.hasNameDescription = hasNameDescription;
+    $scope.sellPrice = getSellPrice($scope.item.sellPrice);
+    for(var i = 0;i < $scope.itemSubClasses.length;i++) {
+      if($scope.item.itemClass == $scope.itemSubClasses[i].class) {
+        $scope.itemClass = $scope.itemSubClasses[i];
+        break;
+      }
+    };
+    for(var i = 0;i < $scope.itemClass.subclasses.length;i++) {
+      if($scope.item.itemSubClass == $scope.itemClass.subclasses[i].subclass) {
+        $scope.itemSubClass = $scope.itemClass.subclasses[i].name;
+        break;
+      }
+    };
   };
   this.itemBind = {
     '1': 'Binds when picked up',
