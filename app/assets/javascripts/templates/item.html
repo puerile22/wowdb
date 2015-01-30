@@ -13,6 +13,6 @@
     <p ng-if = 'item.allowableClasses'>Classes: <span ng-repeat = 'class in item.allowableClasses' class = 'color-{{ class }}'>{{ classes[class] }}<span ng-if = 'isLast(class, item.allowableClasses)'>, </span></span></p>
     <p ng-if = 'item.allowableRaces'>Races: <span ng-repeat = "race in item.allowableRaces | unique"><span>{{ races[race] }}<span ng-if = 'isLast(race, item.allowableRaces)'>, </span></span></p>
     <p ng-if = 'item.requiredLevel > 0'>Requires Level {{ item.requiredLevel }}</p>
-    <p>Sell Price: <span ng-repeat = '(currency, price) in sellPrice' ng-if = 'item.sellPrice > 0 && price' class = 'icon-{{ currency }}'>{{ price }}</span>
+    <p ng-if = 'item.sellPrice > 0'>Sell Price: <span ng-repeat = '(currency, price) in sellPrice' ng-if = 'price' class = 'icon-{{ currency }}'>{{ price }}</span>
   </div>
 </div>

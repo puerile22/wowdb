@@ -38,9 +38,9 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
     };
     for(var i = 0;i < arr.length/2 || i < 3;i++) {
       if(i === 2) {
-        sellPrice[2 - i] = arr.slice(i * 2).reverse().join('');
+        sellPrice[2 - i] = parseInt(arr.slice(i * 2).reverse().join(''));
       } else {
-        sellPrice[2 - i] = arr.slice(i * 2,i * 2 + 2).reverse().join('');
+        sellPrice[2 - i] = parseInt(arr.slice(i * 2,i * 2 + 2).reverse().join(''));
       }
     };
     return sellPrice;
@@ -51,6 +51,20 @@ app.service('ItemService', ['$http', "$resource", function($http, $resource) {
     } else {
       return true;
     };
+  };
+  this.predicate = function(stats) {
+    if (stats.stat > 70) {
+      return 2;
+    } else {
+      return stats.stat;
+    }
+  };
+  this.isLast = function(i, array) {
+    if(i !== array[array.length - 1]) {
+      return true;
+    } else {
+      return false;
+    }
   };
   this.itemBind = {
     '1': 'Binds when picked up',
