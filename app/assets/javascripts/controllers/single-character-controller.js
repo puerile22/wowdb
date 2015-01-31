@@ -31,6 +31,13 @@ app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'Item
   $scope.resetItem = function() {
     $scope.item = {};
   };
+  $scope.itemReady = function() {
+    if($scope.item.name === undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  };
   $scope.itemBaseUrl = 'http://us.media.blizzard.com/wow/icons/56';
   $scope.imgBaseUrl = 'http://us.battle.net/static-render/us';
   $scope.predicate = ItemService.predicate;

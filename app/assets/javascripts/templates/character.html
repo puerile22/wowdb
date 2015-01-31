@@ -4,10 +4,10 @@
   {{ character.realm }}<br>
   Item level: {{ character.items.averageItemLevel }}<br>
   Achievement point: {{ character.achievementPoints }}<br>
-  <div ng-repeat = 'slot in items' class = 'small-1 columns' ng-if = 'hasItem(slot)'>
+  <div ng-repeat = 'slot in items' class = 'items' ng-if = 'hasItem(slot)'>
     <a href = '#/item/{{ character.items[slot].id }}/{{ character.items[slot].context }}' ng-mouseenter = 'getItem(character.items[slot].id)' ng-mouseleave = 'resetItem()'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[slot].icon }}.jpg" data-quality = '{{ character.items[slot].quality }}'/></a>
     <div class = 'itemInfo'>
-      <div class = 'info'>
+      <div class = 'info' ng-if = 'itemReady()'>
         <h5 data-quality-title = '{{ item.quality }}'>{{ item.name }}</h5>
         <p style = 'color: #00ff00' ng-if = 'hasNameDescription(item)'>{{ item.nameDescription }}</p>
         <p class = 'itemLevel'>Item Level {{ item.itemLevel }}</p>
@@ -21,6 +21,9 @@
         <p ng-if = 'item.allowableRaces' class = 'infoColor'>Races: <span ng-repeat = "race in item.allowableRaces | unique" class = 'infoColor'><span>{{ races[race] }}<span ng-if = 'isLast(race, item.allowableRaces)'>, </span></span></p>
         <p ng-if = 'item.requiredLevel > 0' class = 'infoColor'>Requires Level {{ item.requiredLevel }}</p>
         <p ng-if = 'item.sellPrice > 0' class = 'infoColor'>Sell Price: <span ng-repeat = '(currency, price) in sellPrice' ng-if = 'price' class = 'icon-{{ currency }}'>{{ price }}</span></p>
+      </div>
+      <div class = 'info' ng-if = '!itemReady()'>
+        <p class = 'infoColor'>Loading...</p>
       </div>
     </div>
   </div>
