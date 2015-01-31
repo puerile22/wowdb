@@ -133,7 +133,7 @@ app.service('ItemService', ['$http', "$resource", function($http) {
     "23":"Held In Off-hand",
     "24":"Ammo",
     "25":"Thrown",
-    "26":"Ranged Right",
+    "26":"Ranged",
     "28":"Relic"
   };
   this.itemStats = {

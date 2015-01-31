@@ -6,7 +6,9 @@
     <p class = 'itemLevel'>Item Level {{ item.itemLevel }}</p>
     <p ng-if = 'itemBind[item.itemBind]'>{{ itemBind[item.itemBind] }}</p>
     <span>{{ inventoryType[item.inventoryType] }}</span>
-    <span>{{ itemSubClass }}</span>
+    <span style = 'float: right'>{{ itemSubClass }}</span>
+    <p ng-if ='item.weaponInfo'><span >{{ item.weaponInfo.damage.min }} - {{ item.weaponInfo.damage.max }}</span><span style = 'float: right'>Speed {{ item.weaponInfo.weaponSpeed }}</span>
+    <p>({{ item.weaponInfo.dps }} damage per second)</p></p>
     <p ng-if = 'item.armor'>{{ item.armor }} Armor</p>
     <p ng-repeat = "stats in item.bonusStats | orderBy:predicate" data-stat = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
     <p ng-if = 'item.maxDurability'>Durability {{ item.maxDurability }}/{{ item.maxDurability }}</p>

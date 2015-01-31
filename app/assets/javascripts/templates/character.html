@@ -7,13 +7,15 @@
   <div ng-repeat = 'slot in items' class = 'items' ng-if = 'hasItem(slot)'>
     <a href = '#/item/{{ character.items[slot].id }}/{{ character.items[slot].context }}' ng-mouseenter = 'getItem(character.items[slot].id)' ng-mouseleave = 'resetItem()'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[slot].icon }}.jpg" data-quality = '{{ character.items[slot].quality }}'/></a>
     <div class = 'itemInfo'>
-      <div class = 'info' ng-if = 'itemReady()'>
+      <div class = 'info' ng-if = 'item.name'>
         <h5 data-quality-title = '{{ item.quality }}'>{{ item.name }}</h5>
         <p style = 'color: #00ff00' ng-if = 'hasNameDescription(item)'>{{ item.nameDescription }}</p>
         <p class = 'itemLevel'>Item Level {{ item.itemLevel }}</p>
         <p ng-if = 'itemBind[item.itemBind]' class = 'infoColor'>{{ itemBind[item.itemBind] }}</p>
         <span id = 'inventoryType'>{{ inventoryType[item.inventoryType] }}</span>
-        <span id = 'subClass'>{{ itemSubClass }}</span>
+        <span id = 'subClass' style = 'float: right'>{{ itemSubClass }}</span>
+        <p class = 'infoColor' ng-if ='item.weaponInfo'><span >{{ item.weaponInfo.damage.min }} - {{ item.weaponInfo.damage.max }}</span><span style = 'float: right'>Speed {{ item.weaponInfo.weaponSpeed }}</span>
+          <p class = 'infoColor'>({{ item.weaponInfo.dps }} damage per second)</p></p>
         <p ng-if = 'item.armor' class = 'infoColor'>{{ item.armor }} Armor</p>
         <p ng-repeat = "stats in item.bonusStats | orderBy:predicate" data-stat-char = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
         <p ng-if = 'item.maxDurability' class = 'infoColor'>Durability {{ item.maxDurability }}/{{ item.maxDurability }}</p>
@@ -22,7 +24,7 @@
         <p ng-if = 'item.requiredLevel > 0' class = 'infoColor'>Requires Level {{ item.requiredLevel }}</p>
         <p ng-if = 'item.sellPrice > 0' class = 'infoColor'>Sell Price: <span ng-repeat = '(currency, price) in sellPrice' ng-if = 'price' class = 'icon-{{ currency }}'>{{ price }}</span></p>
       </div>
-      <div class = 'info' ng-if = '!itemReady()'>
+      <div class = 'info' ng-if = '!item.name'>
         <p class = 'infoColor'>Loading...</p>
       </div>
     </div>
