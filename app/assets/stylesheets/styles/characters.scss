@@ -46,3 +46,21 @@ a:hover + .itemInfo {
 .info {
   padding: 5px;
 }
+.info p {
+  font-size: 12px;
+  margin: 3px;
+  padding: 0px;
+}
+.infoColor {
+  color: white;
+}
+#inventoryType {
+  color: white;
+  font-size: 12px;
+  margin-left: 3px;
+  display: inline-block;
+}
+#subClass {
+  color: white;
+  font-size: 12px;
+}

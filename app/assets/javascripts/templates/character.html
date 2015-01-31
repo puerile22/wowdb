@@ -1,14 +1,26 @@
 <div class = 'small-9 small-centered columns'>
   <img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/><span class = 'color-{{character.class}}'>{{ character.name }}</span><br>
-  {{ character.level }} {{ race[character.race] }} {{ class[character.class] }}<br>
+  {{ character.level }} {{ races[character.race] }} {{ classes[character.class] }}<br>
   {{ character.realm }}<br>
   Item level: {{ character.items.averageItemLevel }}<br>
   Achievement point: {{ character.achievementPoints }}<br>
-  <div ng-repeat = 'item in items' class = 'small-1 columns' ng-if = 'hasItem(item)'>
-    <a href = '#/item/{{ character.items[item].id }}/{{ character.items[item].context }}'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[item].icon }}.jpg" data-quality = '{{ character.items[item].quality }}'/></a>
+  <div ng-repeat = 'slot in items' class = 'small-1 columns' ng-if = 'hasItem(slot)'>
+    <a href = '#/item/{{ character.items[slot].id }}/{{ character.items[slot].context }}' ng-mouseenter = 'getItem(character.items[slot].id)' ng-mouseleave = 'resetItem()'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[slot].icon }}.jpg" data-quality = '{{ character.items[slot].quality }}'/></a>
     <div class = 'itemInfo'>
       <div class = 'info'>
-        <h5 data-quality-title = '{{ character.items[item].quality }}'>{{ character.items[item].name }}</h5>
+        <h5 data-quality-title = '{{ item.quality }}'>{{ item.name }}</h5>
+        <p style = 'color: #00ff00' ng-if = 'hasNameDescription(item)'>{{ item.nameDescription }}</p>
+        <p class = 'itemLevel'>Item Level {{ item.itemLevel }}</p>
+        <p ng-if = 'itemBind[item.itemBind]' class = 'infoColor'>{{ itemBind[item.itemBind] }}</p>
+        <span id = 'inventoryType'>{{ inventoryType[item.inventoryType] }}</span>
+        <span id = 'subClass'>{{ itemSubClass }}</span>
+        <p ng-if = 'item.armor' class = 'infoColor'>{{ item.armor }} Armor</p>
+        <p ng-repeat = "stats in item.bonusStats | orderBy:predicate" data-stat-char = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
+        <p ng-if = 'item.maxDurability' class = 'infoColor'>Durability {{ item.maxDurability }}/{{ item.maxDurability }}</p>
+        <p ng-if = 'item.allowableClasses' class = 'infoColor'>Classes: <span ng-repeat = 'class in item.allowableClasses' class = 'color-{{ class }}'>{{ classes[class] }}<span ng-if = 'isLast(class, item.allowableClasses)'>, </span></span></p>
+        <p ng-if = 'item.allowableRaces' class = 'infoColor'>Races: <span ng-repeat = "race in item.allowableRaces | unique" class = 'infoColor'><span>{{ races[race] }}<span ng-if = 'isLast(race, item.allowableRaces)'>, </span></span></p>
+        <p ng-if = 'item.requiredLevel > 0' class = 'infoColor'>Requires Level {{ item.requiredLevel }}</p>
+        <p ng-if = 'item.sellPrice > 0' class = 'infoColor'>Sell Price: <span ng-repeat = '(currency, price) in sellPrice' ng-if = 'price' class = 'icon-{{ currency }}'>{{ price }}</span></p>
       </div>
     </div>
   </div>
