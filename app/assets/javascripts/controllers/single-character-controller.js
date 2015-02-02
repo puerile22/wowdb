@@ -4,13 +4,6 @@ app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'Item
     $scope.character = data;
     $scope.items = $scope.itemArray;
   });
-  $scope.hasItem = function(item) {
-    if ($scope.character.items[item]) {
-      return true;
-    } else {
-      return false;
-    };
-  };
   $scope.getItem = function(id) {
     ItemService.getItem(id).success(function(data) {
       if (data.name === undefined) {
