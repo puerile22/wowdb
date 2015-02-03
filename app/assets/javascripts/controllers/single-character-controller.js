@@ -4,6 +4,9 @@ app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'Item
     $scope.character = data;
     $scope.items = $scope.itemArray;
   });
+  CharFactory.singleCharacter($route.current.params, {fields: 'stats'}).success(function(data) {
+    $scope.stats = data.stats;
+  });
   $scope.getItem = function(id) {
     ItemService.getItem(id).success(function(data) {
       if (data.name === undefined) {
