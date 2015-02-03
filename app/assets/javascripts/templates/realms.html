@@ -10,12 +10,12 @@
       <th><a href = '' ng-click="order = 'queue'; reverse = !reverse"> Queue </a></th>
     </tr>
     <tr ng-repeat = "realm in realms | orderBy:order:reverse">
-      <th>{{ realm.status }}</th>
+      <th><div class = "status-{{ realm.status }}"></div></th>
       <th>{{ realm.name }}</th>
-      <th>{{ realm.type }}</th>
-      <th>{{ realm.population }}</th>
-      <th>{{ realm.locale }}</th>
-      <th>{{ realm.queue }}</th>
+      <th class = "{{ realm.type }}">({{ realm.type }})</th>
+      <th class = "{{ realm.population }}">{{ realm.population }}</th>
+      <th>{{ locale[realm.locale] }}</th>
+      <th ng-if = "realm.queue === 'true'">{{ realm.queue }}</th>
     </tr>
   </table>
 </div>

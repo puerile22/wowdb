@@ -1,0 +1,29 @@
+.low {
+  color: #3c3;
+}
+.medium {
+  color: #ebdba2;
+}
+.high {
+  color: #C33;
+}
+.pve {
+  color: #ebdba2;
+}
+.pvp {
+  color: #C33;
+}
+.rp {
+  color: #3c3;
+}
+.rppvp {
+  color: #ebdba2;
+}
+.status-true {
+  background:url(http://us.battle.net/wow/static/images/icons/status.gif) 0 0 no-repeat; margin:0 auto; height:28px; width:27px;
+  background-position:-110px 0;
+}
+.status-false {
+  background:url(http://us.battle.net/wow/static/images/icons/status.gif) 0 0 no-repeat; margin:0 auto; height:28px; width:27px;
+  background-position:0 0;
+}

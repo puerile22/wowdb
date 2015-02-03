@@ -4,4 +4,5 @@ app.controller('RealmController', ['$scope', 'RealmService', function($scope, Re
   });
   $scope.reverse = false;
   $scope.order = 'name';
+  $scope.locale = RealmService.locale;
 }]);

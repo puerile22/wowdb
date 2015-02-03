@@ -20,4 +20,9 @@ app.service('RealmService', ['$http', function($http) {
       params: params
     })
   };
+  this.locale = {
+    "en_US": "United States",
+    "pt_BR": "Brazil",
+    "es_MX": "Latin America"
+  };
 }]);
