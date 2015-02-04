@@ -6,6 +6,7 @@ app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'Item
   });
   CharFactory.singleCharacter($route.current.params, {fields: 'stats'}).success(function(data) {
     $scope.stats = data.stats;
+    $scope.stats.powerType = $scope.stats.powerType.substring(0, 1).toUpperCase() + $scope.stats.powerType.substring(1);
   });
   $scope.getItem = function(id) {
     ItemService.getItem(id).success(function(data) {
