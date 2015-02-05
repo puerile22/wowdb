@@ -4,10 +4,7 @@
   {{ character.realm }}<br>
   Item level: {{ character.items.averageItemLevel }}<br>
   Achievement point: {{ character.achievementPoints }}<br>
-  <div>
-    <span>Health {{ stats.health}}</span>
-    <span>{{ stats.powerType }} {{ stats.power }}</span>
-  </div>
+  
   <div ng-repeat = 'slot in items' class = 'items' ng-if = 'character.items[slot]'>
     <a href = '#/item/{{ character.items[slot].id }}/{{ character.items[slot].context }}' ng-mouseenter = 'getItem(character.items[slot].id)' ng-mouseleave = 'resetItem()'><img ng-src = "{{ itemBaseUrl }}/{{ character.items[slot].icon }}.jpg" data-quality = '{{ character.items[slot].quality }}'/></a>
     <div class = 'itemInfo'>
@@ -32,5 +29,15 @@
         <p class = 'infoColor'>Loading...</p>
       </div>
     </div>
+    <div>
+    <span>Health {{ stats.health}}</span>
+    <span>{{ stats.powerType }} {{ stats.power }}</span>
+    </div>
+  </div>
+  <div class = 'attribute'>
+    <p class = 'attr'>Strength {{ stats.str }}</p>
+    <p class = 'attr'>Agility {{ stats.agi }}</p>
+    <p class = 'attr'>Intellect {{ stats.int }}</p>
+    <p class = 'attr'>Stamina {{ stats.sta }}</p>
   </div>
 </div>
