@@ -136,6 +136,7 @@ app.service('ItemService', ['$http', "$resource", function($http) {
     "26":"Ranged",
     "28":"Relic"
   };
+  this.itemArray = ['head', 'neck', 'shoulder', 'back', 'chest', 'shirt', 'tabard', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainHand', 'offHand'];
   this.itemStats = {
    "-1": "None",
    0: "Mana",

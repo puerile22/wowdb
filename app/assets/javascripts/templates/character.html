@@ -16,7 +16,7 @@
         <span id = 'inventoryType'>{{ inventoryType[item.inventoryType] }}</span>
         <span id = 'subClass' style = 'float: right'>{{ itemSubClass }}</span>
         <p class = 'infoColor' ng-if ='item.weaponInfo'><span >{{ item.weaponInfo.damage.min }} - {{ item.weaponInfo.damage.max }}</span><span style = 'float: right'>Speed {{ item.weaponInfo.weaponSpeed }}</span>
-          <p class = 'infoColor' ng-if ='item.weaponInfo'>({{ item.weaponInfo.dps }} damage per second)</p></p>
+          <p class = 'infoColor' ng-if ='item.weaponInfo'>({{ item.weaponInfo.dps | number: 2 }} damage per second)</p></p>
         <p ng-if = 'item.armor' class = 'infoColor'>{{ item.armor }} Armor</p>
         <p ng-repeat = "stats in item.bonusStats | orderBy:predicate" data-stat-char = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
         <p ng-if = 'item.maxDurability' class = 'infoColor'>Durability {{ item.maxDurability }}/{{ item.maxDurability }}</p>

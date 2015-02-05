@@ -1,5 +1,5 @@
 app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'ItemService', function($scope, CharFactory, $route, ItemService) {
-  $scope.itemArray = ['head', 'neck', 'shoulder', 'back', 'chest', 'shirt', 'tabard', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1', 'finger2', 'trinket1', 'trinket2', 'mainHand', 'offHand'];
+  $scope.itemArray = ItemService.itemArray;
   CharFactory.singleCharacter($route.current.params, {fields: 'items'}).success(function(data) {
     $scope.character = data;
     $scope.items = $scope.itemArray;
