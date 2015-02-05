@@ -16,7 +16,7 @@
         <span id = 'inventoryType'>{{ inventoryType[item.inventoryType] }}</span>
         <span id = 'subClass' style = 'float: right'>{{ itemSubClass }}</span>
         <p class = 'infoColor' ng-if ='item.weaponInfo'><span >{{ item.weaponInfo.damage.min }} - {{ item.weaponInfo.damage.max }}</span><span style = 'float: right'>Speed {{ item.weaponInfo.weaponSpeed }}</span>
-          <p class = 'infoColor'>({{ item.weaponInfo.dps }} damage per second)</p></p>
+          <p class = 'infoColor' ng-if ='item.weaponInfo'>({{ item.weaponInfo.dps }} damage per second)</p></p>
         <p ng-if = 'item.armor' class = 'infoColor'>{{ item.armor }} Armor</p>
         <p ng-repeat = "stats in item.bonusStats | orderBy:predicate" data-stat-char = '{{ stats.stat }}'>+{{ stats.amount }} {{ itemStats[stats.stat] }}</p>
         <p ng-if = 'item.maxDurability' class = 'infoColor'>Durability {{ item.maxDurability }}/{{ item.maxDurability }}</p>
@@ -31,13 +31,48 @@
     </div>
   </div>
   <div>
-    <span>Health {{ stats.health}}</span>
-    <span>{{ stats.powerType }} {{ stats.power }}</span>
+    <span id = 'healthBar' class = 'statsBar'><p>Health {{ stats.health}}</p></span>
+    <span id = '{{ stats.powerType}}Bar' class = 'statsBar'><p>{{ stats.powerType }} {{ stats.power }}</p></span>
   </div>
-  <div class = 'attribute'>
-    <p class = 'attr'>Strength {{ stats.str }}</p>
-    <p class = 'attr'>Agility {{ stats.agi }}</p>
-    <p class = 'attr'>Intellect {{ stats.int }}</p>
-    <p class = 'attr'>Stamina {{ stats.sta }}</p>
+  <div id = 'stats' class = "small-4 columns">
+    <div id = 'attribute' class = 'small-6 columns'>
+      <h5>Attribute</h5>
+      <span>Strength </span><span class = 'attr'>{{ stats.str }}</span><br>
+      <span>Agility </span><span class = 'attr'>{{ stats.agi }}</span><br>
+      <span>Intellect </span><span class = 'attr'>{{ stats.int }}</span><br>
+      <span>Stamina </span><span class = 'attr'>{{ stats.sta }}</span><br>
+    </div>
+    <div id = 'defense' class = 'small-6 columns'>
+      <h5>Defense</h5>
+      <span>Armor</span><span class = 'attr'>{{ stats.armor }}</span><br>
+      <span>Dodge</span><span class = 'attr'>{{ stats.dodge | number: 2 }}%</span><br>
+      <span>Parry</span><span class = 'attr'>{{ stats.parry | number: 2 }}%</span><br>
+      <span>Block</span><span class = 'attr'>{{ stats.block | number: 2 }}%</span><br>
+    </div>
+    <div id = 'attack' class = 'small-6 columns'>
+      <h5>Attack</h5>
+      <span>Damage</span><span class = 'attr'>{{ stats.mainHandDmgMin }} - {{ stats.mainHandDmgMax }}</span><br>
+      <span>Attack Power</span><span class = 'attr'>{{ stats.attackPower }}</span><br>
+      <span>Speed</span><span class = 'attr'>{{ stats.mainHandSpeed | number: 2 }}</span><span class = 'attr' ng-if = "character.items['offHand']">/{{ stats.offHandSpeed | number: 2 }}</span><br>
+    </div>
+    <div id = 'enhancement' class = 'small-6 columns'>
+      <h5>Enhancement</h5>
+      <span>Crit</span><span class = 'attr'>{{ stats.crit | number: 2 }}%</span><br>
+      <span>Haste</span><span class = 'attr'>{{ stats.haste | number: 2 }}%</span><br>
+      <span>Mastery</span><span class = 'attr'>{{ stats.mastery | number: 2 }}%</span><br>
+    </div>
+    <div id = 'spell' class = 'small-6 columns'>
+      <h5>Spell</h5>
+      <span>Spell Power</span><span class = 'attr'>{{ stats.spellPower }}</span><br>
+      <span>Mana Regen</span><span class = 'attr'>{{ stats.mana5 }}</span><br>
+    </div>
+    <div id = 'enhancement' class = 'small-6 columns'>
+      <span>Spirit</span><span class = 'attr'>{{ stats.spr }}</span><br>
+      <span>Bonus Armor</span><span class = 'attr'>{{ stats.bonusArmor }}</span><br>
+      <span>Multistrike</span><span class = 'attr'>{{ stats.multistrike | number: 2 }}%</span><br>
+      <span>Leech</span><span class = 'attr'>{{ stats.leech | number: 2 }}%</span><br>
+      <span>Versatility</span><span class = 'attr'>{{ stats.versatility }}</span><br>
+      <span>Avoidance</span><span class = 'attr'>{{ stats.avoidanceRating | number: 2 }}%</span><br>
+    </div>
   </div>
 </div>

@@ -67,3 +67,40 @@ a:hover + .itemInfo {
   color: white;
   font-size: 12px;
 }
+#stats {
+  font-size: 12px;
+  color: #efc9a0;
+}
+.attr {
+  color: black;
+  float: right;
+}
+.statsBar {
+  display: inline-block;
+  width: 15%;
+  border: 1px solid;
+  border-radius: 3px;
+  text-shadow: 1px 1px 1px #000;
+}
+.statsBar p {
+  margin: 0;
+  padding-left: 15px;
+}
+#healthBar {
+  background-color: #248000;
+}
+#ManaBar {
+  background-color: #1c8aff;
+}
+#EnergyBar {
+  background-color: #cb9501;
+}
+#Runic-powerBar {
+  background-color: #00accb;
+}
+#FocusBar {
+  background-color: #964414;
+}
+#RageBar {
+  background-color: #ab0000;
+}
