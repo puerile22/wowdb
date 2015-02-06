@@ -1,3 +1,28 @@
+table, th, tr {
+  border: 1px solid #391303 !important;
+  border-spacing: 0 !important;
+}
+th {
+  background-color: #7c2804 !important;
+}
+th a {
+  color: white !important;
+}
+tr:nth-of-type(even) {
+  background-color: #2b1507 !important;
+}
+tr:nth-of-type(odd) {
+  background-color: #231207 !important;
+}
+#realm-name {
+  width: 50%;
+}
+#realm-type {
+  width: 5%;
+}
+#realm-population {
+  width: 15%
+}
 .low {
   color: #3c3;
 }
