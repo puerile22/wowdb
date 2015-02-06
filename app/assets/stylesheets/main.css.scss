@@ -4,3 +4,30 @@
 body {
   background: #000 url("background-cata.jpg") no-repeat !important;
 }
+h1 {
+  color: #ffb100 !important;
+}
+#searchBar {
+  float: right;
+}
+#searchBar #search {
+  border-radius: 5px;
+  padding: 8px 40px 8px 8px;
+  height: 31px;
+  width: 90%;
+  font-size: 16px;
+}
+#search-button {
+  width: 44px;
+  height: 46px;
+  border: none;
+  position: absolute;
+  top: 66px;
+  right: 26px;
+  z-index: 7;
+  background-color: transparent;
+  background-image: url(http://us.battle.net/wow/static/images/icons/mag-glass.png);
+}
+#search-button:hover {
+  cursor: pointer;
+}
