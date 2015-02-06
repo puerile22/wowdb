@@ -11,7 +11,7 @@ app.controller('HomePageController', ['$scope', 'RealmService', 'CharFactory', '
 
   $scope.clickSearch = function() {
     CharFactory.find($scope.realms, $scope.keyword);
-    $location.path('/characters');
+    $location.path('/characters' + '/' + $scope.keyword);
   }
 
 }]);

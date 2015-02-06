@@ -1,8 +1,6 @@
-<div class = 'characters'>
-  <div class = 'small-9 small-centered columns'>
-    <div class = 'small-3 columns' ng-repeat = "character in characters">
-      <a href = '#/character/{{ character.realm }}/{{ character.name }}' class='color-{{ character.class }}'><img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/>{{ character.name }}</a><br>
-      {{ character.level }} {{ race[character.race] }} {{ class[character.class] }}<br>
-      {{ character.realm }}
-    </div>
+<h3 id = 'search-result-title'>Summary of results for <span id = 'search-name'>{{ name }}</span></h3>
+<div data-char = 'character' class = 'small-3 columns' ng-repeat = "character in characters">
+  <a href = '#/character/{{ character.realm }}/{{ character.name }}' class='color-{{ character.class }}'><img ng-src = "{{ imgBaseUrl }}/{{ character.thumbnail }}"/>{{ character.name }}</a><br>
+  {{ character.level }} {{ race[character.race] }} {{ class[character.class] }}<br>
+  {{ character.realm }}
 </div>

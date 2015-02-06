@@ -11,7 +11,7 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: "<%= asset_path('templates/realms.html') %>",
     controller: "RealmController"
   })
-  .when('/characters', {
+  .when('/characters/:keyword', {
     templateUrl: "<%= asset_path('templates/characters.html') %>",
     controller: "CharController"
   })
