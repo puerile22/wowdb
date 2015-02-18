@@ -1,4 +1,4 @@
-app.service("CharFactory", ['$http', function($http) {
+app.service("CharService", ['$http', function($http) {
   var characters;
   var baseUrl = 'https://us.api.battle.net/wow/character/';
   this.find = function (realms, character, params) {

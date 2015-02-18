@@ -1,4 +1,4 @@
-app.controller('HomePageController', ['$scope', 'RealmService', 'CharFactory', '$location', function($scope, RealmService, CharFactory, $location) {
+app.controller('HomePageController', ['$scope', 'RealmService', 'CharService', '$location', function($scope, RealmService, CharService, $location) {
   RealmService.request('realm/status').success(function(data) {
     $scope.realms = data.realms;
   });
@@ -10,7 +10,7 @@ app.controller('HomePageController', ['$scope', 'RealmService', 'CharFactory', '
   };
 
   $scope.clickSearch = function() {
-    CharFactory.find($scope.realms, $scope.keyword);
+    CharService.find($scope.realms, $scope.keyword);
     $location.path('/characters' + '/' + $scope.keyword);
   }
 

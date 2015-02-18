@@ -1,4 +1,4 @@
-app.controller('ItemController', ['$scope', 'ItemService', '$route', 'CharFactory', function($scope, ItemService, $route, CharFactory) {
+app.controller('ItemController', ['$scope', 'ItemService', '$route', 'CharService', function($scope, ItemService, $route, CharService) {
   ItemService.getItem($route.current.params.id).success(function(data) {
     if (data.name === undefined) {
       ItemService.getAvailableContexts($route.current.params.id, data.availableContexts[0]).success(function(data) {
@@ -15,8 +15,8 @@ app.controller('ItemController', ['$scope', 'ItemService', '$route', 'CharFactor
     };
   });
   $scope.predicate = ItemService.predicate;
-  $scope.races = CharFactory.race;
-  $scope.classes = CharFactory.class;
+  $scope.races = CharService.race;
+  $scope.classes = CharService.class;
   $scope.itemStats = ItemService.itemStats;
   $scope.itemBind = ItemService.itemBind;
   $scope.itemClass = ItemService.itemClass;

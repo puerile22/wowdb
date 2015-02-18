@@ -1,10 +1,10 @@
-app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'ItemService', function($scope, CharFactory, $route, ItemService) {
+app.controller("SingleCharController", ["$scope", "CharService", '$route', 'ItemService', function($scope, CharService, $route, ItemService) {
   $scope.itemArray = ItemService.itemArray;
-  CharFactory.singleCharacter($route.current.params, {fields: 'items'}).success(function(data) {
+  CharService.singleCharacter($route.current.params, {fields: 'items'}).success(function(data) {
     $scope.character = data;
     $scope.items = $scope.itemArray;
   });
-  CharFactory.singleCharacter($route.current.params, {fields: 'stats'}).success(function(data) {
+  CharService.singleCharacter($route.current.params, {fields: 'stats'}).success(function(data) {
     $scope.stats = data.stats;
     $scope.stats.powerType = $scope.stats.powerType.substring(0, 1).toUpperCase() + $scope.stats.powerType.substring(1);
   });
@@ -31,8 +31,8 @@ app.controller("SingleCharController", ["$scope", "CharFactory", '$route', 'Item
   $scope.itemBaseUrl = 'http://us.media.blizzard.com/wow/icons/56';
   $scope.imgBaseUrl = 'http://us.battle.net/static-render/us';
   $scope.predicate = ItemService.predicate;
-  $scope.races = CharFactory.race;
-  $scope.classes = CharFactory.class;
+  $scope.races = CharService.race;
+  $scope.classes = CharService.class;
   $scope.itemStats = ItemService.itemStats;
   $scope.itemBind = ItemService.itemBind;
   $scope.itemClass = ItemService.itemClass;
